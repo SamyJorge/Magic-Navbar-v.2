@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Resetando as pré configurações do navegador p/ usar as minhas. */
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Roboto', sans-serif;
+}
+
+/* Defindo esquema de cores através de variáveis: 
+Facilita as mudanças de acordo com a necessidades
+do projeto. */
+:root
+{
+    --blueBlack: #002022;
+    --white: #e8e8e8;
+    --blue: #006d7b;
+}
+
+/* Configurações do corpo */
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--blueBlack);
+}
+
+/* Configurações Barra de navegação */
+.navigation
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 70px;
+    background: var(--white);
+    border-radius: 10px;
+}
+
+.navigation ul
+{
+    display: flex;
+    width: 350px;
+}
+
+.navigation ul li
+{
+    position: relative;
+    list-style: none;
+    /* 350(largura ul) / 5 = 70 */
+    width: 70px;
+    height: 60px;
+    z-index: 2;
+}
+
+.navigation ul li a
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-weight: 500;
+}
+
+.navigation ul li a .icon
+{
+    position: relative;
+    display: block;
+    line-height: 65px;
+    font-size: 1.5em;
+    transition: 0.5s;
+    color: var(--blueBlack);
+}
+
+.navigation ul li.active a .icon
+{
+    transform: translateY(-32px);
+    color: var(--blue);
+}
+
+.navigation ul li a .text
+{
+    position: absolute;  
+    background: var(--blue);
+    color: var(--white);
+    padding: 2px 7px;
+    border-radius: 12px;
+    font-weight: 400;
+    font-size: 0.75em;
+    letter-spacing: 0.05;
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.navigation ul li.active a .text
+{
+    transform: translateY(-4px);
+    opacity: 1;
+}
+
+.indicator
+{
+    position: absolute;
+    top: -35px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--white);
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.indicator::before
+{
+   content: '';
+   position: absolute;
+   top: 6px;
+   left: -28px;
+   width: 30px;
+   height: 30px;
+   background: transparent;
+   border-radius: 50%;
+   box-shadow: 15px 18px var(--white);
+}
+
+.indicator::after
+{
+   content: '';
+   position: absolute;
+   top: 6px;
+   right: -28px;
+   width: 30px;
+   height: 30px;
+   background: transparent;
+   border-radius: 50%;
+   box-shadow: -15px 18px var(--white);
+}
+
+.navigation ul li:nth-child(1).active ~ .indicator
+{
+    transform: translateX(calc(70px * 0));
+}
+
+.navigation ul li:nth-child(2).active ~ .indicator
+{
+    transform: translateX(calc(70px * 1));
+}
+
+.navigation ul li:nth-child(3).active ~ .indicator
+{
+    transform: translateX(calc(70px * 2));
+}
+
+.navigation ul li:nth-child(4).active ~ .indicator
+{
+    transform: translateX(calc(70px * 3));
+}
+
+.navigation ul li:nth-child(5).active ~ .indicator
+{
+    transform: translateX(calc(70px * 4));
+}
